@@ -3,7 +3,6 @@
 This is my personal system design archives and it's where I store my system design research that aims to provide resources to better interview developers in my engineering management journey.
 
 - [System Design](#system-design)
-  - [Introduction](#introduction)
   - [What Are Design Fundamentals?](#what-are-design-fundamentals)
   - [Client-Server Model](#client-server-model)
   - [Network Protocols](#network-protocols)
@@ -29,8 +28,6 @@ This is my personal system design archives and it's where I store my system desi
   - [API Design](#api-design)
 
 # System Design
-
-## Introduction
 
 ## What Are Design Fundamentals?
 
