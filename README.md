@@ -219,7 +219,6 @@ implemented on top of TCP. Clients make HTTP requests, and servers respond with
 a response.
 
 Requests typically have the following schema:
-
 ```
 host: string (example: domaintest.io)
 port: integer (example: 80 or 443)
@@ -555,3 +554,183 @@ minutes).
 
 A relational database that uses a dialect of SQL called PostgreSQL. Provides
 ACID transactions.
+
+## Key-Value Stores
+
+One of the most commonly used NoSQL paradigms today, the key-value store bases its data model on the associative array data type.
+
+The result? A fast, flexible storage machine that resembles a hash table. That's right folks, our favorite friendly neighborhood data structure strikes again!
+
+### Key-value store
+
+A Key-Value Store is a flexible NoSQL database that's often used for caching
+and dynamic configuration. Popular options include DynamoDB, Etcd, Redis, and
+ZooKeeper.
+
+### Etcd
+
+Etcd is a strongly consistent and highly available key-value store that's
+often used to implement leader election in a system.
+
+### Redis
+
+An in-memory key-value store. Does offer some persistent storage options but is
+typically used as a really fast, best-effort caching solution. Redis is also often
+used to implement `rate limiting`.
+
+### ZooKeeper
+
+ZooKeeper is a strongly consistent, highly available key-value store. It's
+often used to store important configuration or to perform leader election.
+
+## Specialized Storage Paradigms
+
+### Blob storage
+
+Widely used kind of storage, in small and large scale systems. They don’t
+really count as databases per se, partially because they only allow the user
+to store and retrieve data based on the name of the blob. This is sort of like
+a key-value store but usually blob stores have different guarantees. They
+might be slower than KV stores but values can be megabytes large (or sometimes
+gigabytes large). Usually people use this to store things like
+`large binaries, database snapshots, or images` and other static assets
+that a website might have.
+
+Blob storage is rather complicated to have on premise, and only giant
+companies like Google and Amazon have infrastructure that supports it. So
+usually in the context of System Design interviews you can assume that you
+will be able to use `GCS` or `S3`. These are blob storage services
+hosted by Google and Amazon respectively, that cost money depending on how
+much storage you use and how often you store and retrieve blobs from that
+storage.
+
+### Time Series Database
+
+A `TSDB` is a special kind of database optimized for storing and
+analyzing time-indexed data: data points that specifically occur at a given
+moment in time. Examples of TSDBs are InfluxDB, Prometheus, and Graphite.
+
+### Graph database
+
+A type of database that stores data following the graph data model. Data
+entries in a graph database can have explicitly defined relationships, much
+like nodes in a graph can have edges.
+
+Graph databases take advantage of their underlying graph structure to perform
+complex queries on deeply connected data very fast.
+
+Graph databases are thus often preferred to relational databases when dealing
+with systems where data points naturally form a graph and have multiple levels
+of relationships—for example, social networks.
+
+### Cypher
+
+A `graph query language` that was originally developed for the Neo4j
+graph database, but that has since been standardized to be used with other
+graph databases in an effort to make it the "SQL for graphs."
+
+Cypher queries are often much simpler than their SQL counterparts. Example
+Cypher query to find data in `Neo4j`, a popular graph database:
+
+```
+MATCH (some_node:SomeLabel)-[:SOME_RELATIONSHIP]-&gt;(some_other_node:SomeLabel {some_property:'value'})
+```
+
+### Spatial Database
+
+A type of database optimized for storing and querying spatial data like
+locations on a map. Spatial databases rely on spatial indexes like
+`quadtrees` to quickly perform spatial queries like finding all
+locations in the vicinity of a region.
+
+### Quadtree
+
+A tree data structure most commonly used to index two-dimensional spatial
+data. Each node in a quadtree has either zero children nodes (and is therefore
+a leaf node) or exactly four children nodes.
+
+A quadtree lends itself well to storing spatial data because it can be
+represented as a grid filled with rectangles that are recursively subdivided
+into four sub-rectangles, where each quadtree node is represented by a
+rectangle and each rectangle represents a spatial region. Assuming we're
+storing locations in the world, we can imagine a quadtree with a maximum
+node-capacity `n` as follows:
+
+The root node, which represents the entire world, is the outermost
+rectangle.
+
+If the entire world has more than `n` locations, the outermost
+rectangle is divided into four quadrants, each representing a region of the
+world.
+
+So long as a region has more than `n` locations, its corresponding
+rectangle is subdivided into four quadrants (the corresponding node in the
+quadtree is given four children nodes).
+
+Regions that have fewer than `n` locations are undivided rectangles
+(leaf nodes).
+
+The parts of the grid that have many subdivided rectangles represent densely
+populated areas (like cities), while the parts of the grid that have few
+subdivided rectangles represent sparsely populated areas (like rural areas).
+
+Finding a given location in a perfect quadtree is an extremely fast operation
+that runs in `log4(x)` time (where `x` is the total
+number of locations), since quadtree nodes have four children nodes.
+
+### Google Storage
+
+GCS is a blob storage service provided by Google.
+
+### S3
+
+S3 is a blob storage service provided by Amazon through `Amazon Web Services (AWS)`.
+
+### InfluxDB
+
+A popular open-source time series database.
+
+### Prometheus
+
+A popular open-source time series database, typically used for monitoring purposes.
+
+### Neo4j
+
+A popular graph database that consists of `nodes`, `relationships`,
+`properties`, and `labels`.
+
+## Replication And Sharding
+
+A system's performance is often only as good as its database's; optimize the
+latter, and watch as the former improves in tandem!
+
+On that note, in this video we'll examine how data redundancy and data partitioning
+techniques can be used to enhance a system's fault tolerance, throughput, and
+overall reliability.
+
+### Replication
+
+The act of duplicating the data from one database server to others. This
+is sometimes used to increase the redundancy of your system and
+tolerate regional failures for instance. Other times you can use
+replication to move data closer to your clients, thus decreasing
+the latency of accessing specific data.
+
+### Sharding
+
+Sometimes called `data partitioning`, sharding is the
+act of splitting a database into two or more pieces called
+`shards` and is typically done to increase the throughput
+of your database. Popular sharding strategies include:
+
+- Sharding based on a client's region.
+- Sharding based on the type of data being stored (e.g: user data gets
+stored in one shard, payments data gets stored in another shard)
+- Sharding based on the hash of a column (only for structured data).
+
+### Hot spot
+
+When distributing a workload across a set of servers, that workload might be
+spread unevenly. This can happen if your `sharding key` or your `hashing function`
+are suboptimal, or if your workload is naturally skewed: some servers will
+receive a lot more traffic than others, thus creating a "hot spot".
