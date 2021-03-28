@@ -813,3 +813,78 @@ make sure your data is not too stale.
 In networking, it usually refers to the act of continuously getting a feed of
 information from a server by keeping an open connection between the two
 machines or processes.
+
+## Configuration
+
+The config file is like the genome of a computer application; it stores parameters
+that define your system's critical settings, much like your DNA stores the genes
+that define your physical characteristics.
+
+Unlike its biological counterpart though, the config file is easily editable.
+No gene therapy needed!
+
+### Configuration
+
+A set of parameters or constants that are critical to a system. Configuration
+is typically written in `JSON` or `YAML` and can be either `static`, meaning
+that it's hard-coded in and shipped with your system's application code (like
+frontend code, for instance), or `dynamic`, meaning that it lives outside
+of your system's application code.
+
+## Rate Limiting
+
+The act of limiting the number of requests sent to or from a system. Rate
+limiting is most often used to limit the number of incoming requests in order
+to prevent `DoS attacks` and can be enforced at the IP-address level, at the
+user-account level, or at the region level, for example. Rate limiting can
+also be implemented in tiers; for instance, a type of network request could be
+limited to 1 per second, 5 per 10 seconds, and 10 per minute.
+
+### DoS attack
+
+Short for "denial-of-service attack", a DoS attack is an attack in which a
+malicious user tries to bring down or damage a system in order to render it
+unavailable to users. Much of the time, it consists of flooding it with
+traffic. Some DoS attacks are easily preventable with rate limiting, while
+others can be far trickier to defend against.
+
+### DDoS attack
+
+Short for "distributed denial-of-service attack", a DDoS attack is a DoS
+attack in which the traffic flooding the target system comes from many
+different sources (like thousands of machines), making it much harder to
+defend against.
+
+### Redis
+
+An in-memory key-value store. Does offer some persistent storage options but is
+typically used as a really fast, best-effort caching solution. Redis is also often
+used to implement `rate limiting`.
+
+## Logging And Monitoring
+
+In order to properly understand and diagnose issues that crop up within a system,
+it’s critical to have mechanisms in place that create audit trails of various events
+that occur within said system.
+
+So go ahead, unleash your inner Orwell and go full Big Brother on your application.
+
+### Logging
+
+The act of collecting and storing logs-useful information about events in
+your system. Typically your programs will output log messages to its STDOUT
+or STDERR pipes, which will automatically get aggregated into a `centralized
+logging solution`.
+
+### Monitoring
+
+The process of having visibility into a system's key metrics, monitoring is
+typically implemented by collecting important events in a system and
+aggregating them in human-readable charts.
+
+### Alerting
+
+The process through which system administrators get notified when critical
+system issues occur. Alerting can be set up by defining specific thresholds
+on monitoring charts, past which alerts are sent to a communication channel
+like Slack.
