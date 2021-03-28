@@ -245,3 +245,78 @@ packet is effectively the smallest unit used to describe data being sent over
 - an `IP header`, which contains the source and destination `IP addresses` as well
 as other information related to the network a `payload`, which is just the data
 being sent over the network.
+
+## Storage
+
+As it turns out, information storage is an incredibly complex topic that is of
+vital importance to systems design.
+
+### Databases
+
+Databases are programs that either use disk or memory to do 2 core things:
+`record` data and `query` data. In general, they are themselves
+servers that are long lived and interact with the rest of your application
+through network calls, with protocols on top of TCP or even HTTP.
+
+Some databases only keep records in memory, and the users of such databases
+are aware of the fact that those records may be lost forever if the machine or
+process dies.
+
+For the most part though, databases need persistence of those records, and
+thus cannot use memory. This means that you have to write your data to disk.
+Anything written to disk will remain through power loss or network partitions,
+so that’s what is used to keep permanent records.
+
+Since machines die often in a large scale system, special disk partitions or
+volumes are used by the database processes, and those volumes can get
+recovered even if the machine were to go down permanently.
+
+### Disk
+
+Usually refers to either `HDD (hard-disk drive)` or `SSD (solid-state drive)`.
+Data written to disk will persist through power failures and general machine
+crashes. Disk is also referred to as `non-volatile storage`.
+
+SSD is far faster than HDD (see latencies of accessing data from SSD and HDD)
+but also far more expensive from a financial point of view. Because of that,
+HDD will typically be used for data that's rarely accessed or updated, but
+that's stored for a long time, and SSD will be used for data that's frequently
+accessed and updated.
+
+### Memory
+
+Short for `Random Access Memory (RAM)`. Data stored in memory will be
+`lost` when the process that has written that data dies.
+
+### Persistence Storage
+
+Usually refers to disk, but in general it is any form of storage that persists
+if the process in charge of managing it dies.
+
+## Latency and Throughput
+
+### Latency
+
+If you've ever experienced lag in a video game, it was most likely due to a
+combination of high latency and low throughput. And lag sucks.
+
+It is therefore your Call of Duty to master these two concepts and to join the
+crusade against high ping.
+
+The time it takes for a certain operation to complete in a system. Most often
+this measure is a time duration, like milliseconds or seconds. You should know
+these orders of magnitude:
+
+```
+Reading 1 MB from RAM: 250 μs (0.25 ms)
+Reading 1 MB from SSD: 1,000 μs (1 ms)
+Transfer 1 MB over Network: 10,000 μs (10 ms)
+Reading 1MB from HDD: 20,000 μs (20 ms)
+Inter-Continental Round Trip: 150,000 μs (150 ms)
+```
+
+### Throughput
+
+The number of operations that a system can handle properly per time unit. For
+instance the throughput of a server can often be measured in requests per
+second (RPS or QPS).
