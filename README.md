@@ -423,3 +423,135 @@ servers, typically used for logging, load balancing, or caching.
 
 Pronounced "engine X"—not "N jinx", Nginx is a very popular webserver that's
 often used as a `reverse proxy` and `load balancer`.
+
+## Load Balancers
+
+Relentlessly distributing network requests across multiple servers, these digital
+traffic cops act as watchful guardians for your system, ensuring that it operates
+at peak performance day and night.
+
+### Load balancer
+
+A type of `reverse proxy` that distributes traffic across servers. Load
+balancers can be found in many parts of a system, from the DNS layer all the
+way to the database layer.
+
+### Server-selection strategy
+
+How a `load balancer` chooses servers when distributing traffic amongst
+multiple servers. Commonly used strategies include round-robin, random
+selection, performance-based selection (choosing the server with the best
+performance metrics, like the fastest response time or the least amount of
+traffic), and IP-based routing.
+
+### Hot Spot
+
+When distributing a workload across a set of servers, that workload might be
+spread unevenly. This can happen if your `sharding key` or your `hashing function`
+are suboptimal, or if your workload is naturally skewed: some servers will
+receive a lot more traffic than others, thus creating a "hot spot".
+
+## Hashing
+
+Hashing? Like from hash tables? Should be simple enough, right?
+
+The good news is that, yes, hashing like from hash tables.
+
+The bad news is that, no, not simple enough. The video duration and thumbnail should be ominously indicative.
+
+### Consistent hashing
+
+A type of hashing that minimizes the number of keys that need to be remapped
+when a hash table gets resized. It's often used by load balancers to
+distribute traffic to servers; it minimizes the number of requests that get
+forwarded to different servers when new servers are added or when existing
+servers are brought down.
+
+### Rendezvous Hashing
+
+A type of hashing also coined `highest random weight` hashing. Allows for
+minimal re-distribution of mappings when a server goes down.
+
+### SHA
+
+Short for "Secure Hash Algorithms", the SHA is a collection of cryptographic
+hash functions used in the industry. These days, SHA-3 is a popular choice to
+use in a system.
+
+## Relational Databases
+
+Tables and ACID.
+
+No, we're not describing a drug lord's desk, but rather referring to key properties of relational databases. There's a lot of material to cover here, so hit the play button, kick back, and get ready to store tons of knowledge in the biggest database of them all: your brain.
+
+### Relational database
+
+A type of structured database in which data is stored following a tabular
+format; often supports powerful querying using SQL.
+
+### Non-relational database
+
+In contrast with relational database (SQL databases), a type of database that
+is free of imposed, tabular-like structure. Non-relational databases are often
+referred to as NoSQL databases.
+
+### SQL
+
+Structured Query Language. Relational databases can be used using a derivative
+of SQL such as PostgreSQL in the case of Postgres.
+
+### SQL database
+
+Any database that supports SQL. This term is often used synonymously with
+"Relational Database", though in practice, not `every` relational
+database supports SQL.
+
+### NoSQL database
+
+Any database that is not SQL-compatible is called NoSQL.
+
+### ACID Transaction
+
+A type of database transaction that has four important properties:
+
+- Atomicity: The operations that constitute the transaction will either
+all succeed or all fail. There is no in-between state.
+
+- Consistency: The transaction cannot bring the database to an invalid
+state. After the transaction is committed or rolled back, the rules for each
+record will still apply, and all future transactions will see the effect of
+the transaction. Also named `Strong Consistency`.
+
+- Isolation: The execution of multiple transactions concurrently will
+  have the same effect as if they had been executed sequentially.
+
+- Durability: Any committed transaction is written to non-volatile
+storage. It will not be undone by a crash, power loss, or network partition.
+
+### Database index
+
+A special auxiliary data structure that allows your database to perform
+certain queries much faster. Indexes can typically only exist to reference
+structured data, like data stored in relational databases. In practice, you
+create an index on one or multiple columns in your database to greatly speed
+up `read` queries that you run very often, with the downside of slightly
+longer `writes` to your database, since writes have to also take place in
+the relevant index.
+
+### Strong consistency
+
+Strong Consistency usually refers to the consistency of ACID transactions,
+as opposed to `Eventual Consistency`.
+
+### Eventual consistency
+
+A consistency model which is unlike `Strong Consistency`. In this model,
+reads might return a view of the system that is stale. An eventually
+consistent datastore will give guarantees that the state of the database will
+eventually reflect writes within a time period (could be 10 seconds, or
+minutes).
+
+### Postgres
+
+A relational database that uses a dialect of SQL called PostgreSQL. Provides
+ACID transactions.
