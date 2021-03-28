@@ -320,3 +320,106 @@ Inter-Continental Round Trip: 150,000 μs (150 ms)
 The number of operations that a system can handle properly per time unit. For
 instance the throughput of a server can often be measured in requests per
 second (RPS or QPS).
+
+## Availability
+
+The odds of a particular server or service being up and running at any point
+in time, usually measured in percentages. A server that has 99% availability
+will be operational 99% of the time (this would be described as having two
+`nines` of availability).
+
+### High availability
+
+Used to describe systems that have particularly high levels of availability,
+typically 5 nines or more; sometimes abbreviated "HA".
+
+### Nines
+
+Typically refers to percentages of uptime. For example, 5 nines of
+availability means an uptime of 99.999% of the time. Below are the downtimes
+expected per year depending on those 9s:
+
+```
+- 99% (two 9s): 87.7 hours
+- 99.9% (three 9s): 8.8 hours
+- 99.99%: 52.6 minutes
+- 99.999%: 5.3 minutes
+```
+
+### Redundancy
+
+The process of replicating parts of a system in an effort to make it more
+reliable.
+
+### SLA
+
+Short for "service-level agreement", an SLA is a collection of guarantees
+given to a customer by a service provider. SLAs typically make guarantees on a
+system's availability, amongst other things. SLAs are made up of one or
+multiple SLOs.
+
+### SLO
+
+Short for "service-level objective", an SLO is a guarantee given to a customer
+by a service provider. SLOs typically make guarantees on a system's
+availability, amongst other things. SLOs constitute an SLA.
+
+## Caching
+
+### Cache
+
+A piece of hardware or software that stores data, typically meant to retrieve
+that data faster than otherwise.
+
+Caches are often used to store responses to network requests as well as
+results of computationally-long operations.
+
+Note that data in a cache can become `stale` if the main source of truth
+for that data (i.e., the main database behind the cache) gets updated and the
+cache doesn't.
+
+### Cache Hit
+
+When requested data could have been found in a cache but isn't.
+
+### Cache Miss
+
+This is typically used to refer to a negative consequence of a system failure or of a
+poor design choice. For example:
+
+If a server goes down, our load balancer will have to forward requests to a
+new server, which will result in cache misses.
+
+### Cache Eviction Policy
+
+The policy by which values get evicted or removed from a cache. Popular cache
+eviction policies include `LRU` (least-recently used), `FIFO` (first
+in first out), and `LFU` (least-frequently used).
+
+### Content Delivery Network
+
+A `CDN` is a third-party service that acts like a cache for your servers.
+Sometimes, web applications can be slow for users in a particular region if
+your servers are located only in another region. A CDN has servers all around
+the world, meaning that the latency to a CDN's servers will almost always be
+far better than the latency to your servers. A CDN's servers are often referred
+to as `PoPs` (Points of Presence). Two of the most popular CDNs are `Cloudflare`
+and `Google Cloud CDN`.
+
+## Proxies
+
+### Forward Proxy
+
+A server that sits between a client and servers and acts on behalf of the
+client, typically used to mask the client's identity (IP address). Note that
+forward proxies are often referred to as just proxies.
+
+### Reverse Proxy
+
+A server that sits between clients and servers and acts on behalf of the
+servers, typically used for logging, load balancing, or caching.
+
+### Nginx
+
+Pronounced "engine X"—not "N jinx", Nginx is a very popular webserver that's
+often used as a `reverse proxy` and `load balancer`.
