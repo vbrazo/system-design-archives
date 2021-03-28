@@ -734,3 +734,82 @@ When distributing a workload across a set of servers, that workload might be
 spread unevenly. This can happen if your `sharding key` or your `hashing function`
 are suboptimal, or if your workload is naturally skewed: some servers will
 receive a lot more traffic than others, thus creating a "hot spot".
+
+## Leader Election
+
+Citizens in a society typically elect a leader by voting for their preferred
+candidate. But how do servers in a distributed system choose a master node?
+Via algorithms of course!
+
+This form of algorithmic democracy is known as "leader election", though we
+personally think "algorithmocracy" sounds way cooler.
+
+### Leader election
+
+The process by which nodes in a cluster (for instance, servers in a set of
+servers) elect a so-called "leader" amongst them, responsible for the primary
+operations of the service that these nodes support. When correctly
+implemented, leader election guarantees that all nodes in the cluster know
+which one is the leader at any given time and can elect a new leader if the
+leader dies for whatever reason.
+
+### Consensus algorithm
+
+A type of complex algorithms used to have multiple entities agree on a single
+data value, like who the "leader" is amongst a group of machines. Two popular
+consensus algorithms are `Paxos` and `Raft`.
+
+### Paxos & Raft
+
+Two consensus algorithms that, when implemented correctly, allow for the
+synchronization of certain operations, even in a distributed setting.
+
+### Etcd
+
+Etcd is a strongly consistent and highly available key-value store that's
+often used to implement leader election in a system.
+
+### ZooKeeper
+
+ZooKeeper is a strongly consistent, highly available key-value store. It's
+often used to store important configuration or to perform leader election.
+
+## Peer-To-Peer Networks
+
+Equality for all.
+Sharing is caring.
+Unity makes strength.
+The more the merrier.
+Teamwork makes the dream work.
+Welcome to peer-to-peer networks!
+
+### Peer-to-peer network
+
+A collection of machines referred to as peers that divide a workload between
+themselves to presumably complete the workload faster than would otherwise be
+possible. Peer-to-peer networks are often used in file-distribution systems.
+
+### Gossip protocol
+
+When a set of machines talk to each other in a uncoordinated manner in a
+cluster to spread information through a system without requiring a central
+source of data.
+
+## Polling And Streaming
+
+You can think of polling and streaming kind of like a classroom; sometimes
+students ask the teacher lots of questions, and other times they quiet down and
+listen attentively to the teacher's lecture.
+
+Now fire up the video and get ready to stream; you won't be able to poll here.
+
+### Polling
+
+The act of fetching a resource or piece of data regularly at an interval to
+make sure your data is not too stale.
+
+### Streaming
+
+In networking, it usually refers to the act of continuously getting a feed of
+information from a server by keeping an open connection between the two
+machines or processes.
