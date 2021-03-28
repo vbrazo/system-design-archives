@@ -16,7 +16,7 @@ This is my personal system design archives and it's where I store my system desi
     - [HTTP](#http)
     - [IP Packet](#ip-packet)
   - [Storage](#storage)
-    - [Database](#database)
+    - [Databases](#databases)
     - [Disk](#disk)
     - [Memory](#memory)
     - [Persistence Storage](#persistence-storage)
@@ -42,7 +42,7 @@ This is my personal system design archives and it's where I store my system desi
   - [Load Balancers](#load-balancers)
     - [Load balancer](#load-balancer)
     - [Server-selection strategy](#server-selection-strategy)
-    - [Hot Spot](#Hot-spot)
+    - [Hot spot](#hot-spot)
   - [Hashing](#hashing)
     - [Eventual consistency](#eventual-consistency)
     - [Strong consistency](#strong-consistency)
@@ -50,7 +50,7 @@ This is my personal system design archives and it's where I store my system desi
     - [SHA](#sha)
   - [Relational Databases](#relational-databases)
     - [Relational database](#relational-database)
-    - [Non-relational database](#Non-relational database)
+    - [Non-relational database](#non-relational-database)
     - [SQL](#sql)
     - [SQL database](#sql-database)
     - [NoSQL database](#nosql-database)
@@ -69,7 +69,7 @@ This is my personal system design archives and it's where I store my system desi
     - [Time Series Database](#time-series-database)
     - [Graph database](#graph-database)
     - [Cypher](#cypher)
-    - [Spatial Database](#spartial-database)
+    - [Spatial Database](#spatial-database)
     - [Quadtree](#quadtree)
     - [Google Storage](#google-storage)
     - [S3](#s3)
@@ -83,7 +83,7 @@ This is my personal system design archives and it's where I store my system desi
   - [Leader Election](#leader-election)
     - [Leader election](#leader-election)
     - [Consensus algorithm](#consensus-algorithm)
-    - [Paxos & Raft](#paxos-&-raft)
+    - [Paxos & Raft](#paxos-and-raft)
     - [Etcd](#etcd)
     - [ZooKeeper](#zookeeper)
   - [Peer-To-Peer Networks](#peer-to-peer-networks)
@@ -111,9 +111,9 @@ This is my personal system design archives and it's where I store my system desi
     - [Distributed File System](#distributed-file-system)
     - [Hadoop](#hadoop)
   - [Security And HTTPS](#security-and-https)
-    - [Main-in-the-middle attack](#)
-    - [Symmetric encryption](#)
-    - [Asymmetric encryption](#)
+    - [Main-in-the-middle attack](#main-in-the-middle-attack)
+    - [Symmetric encryption](#symmetric-encryption)
+    - [Asymmetric encryption](#asymmetric-encryption)
     - [AES](#aes)
     - [HTTPS](#https)
     - [TLS](#tls)
@@ -728,7 +728,7 @@ of your database. Popular sharding strategies include:
 stored in one shard, payments data gets stored in another shard)
 - Sharding based on the hash of a column (only for structured data).
 
-### Hot spot
+### Hot Spot
 
 When distributing a workload across a set of servers, that workload might be
 spread unevenly. This can happen if your `sharding key` or your `hashing function`
@@ -759,7 +759,7 @@ A type of complex algorithms used to have multiple entities agree on a single
 data value, like who the "leader" is amongst a group of machines. Two popular
 consensus algorithms are `Paxos` and `Raft`.
 
-### Paxos & Raft
+### Paxos and Raft
 
 Two consensus algorithms that, when implemented correctly, allow for the
 synchronization of certain operations, even in a distributed setting.
@@ -927,7 +927,7 @@ will always yield the same result: the value will be "COMPLETE".
 A distributed messaging system created by LinkedIn. Very useful
 when using the `streaming` paradigm as opposed to `polling`.
 
-### Cloud Pub/Sub
+### Cloud Pub Sub
 
 A highly-scalable Pub/Sub messaging service created by Google. Guarantees
 `at-least-once delivery` of messages and supports "rewinding" in order to
