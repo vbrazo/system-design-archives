@@ -26,7 +26,7 @@ This is my personal system design archives and it's where I store my system desi
   - [Availability](#availability)
     - [High availability](#high-availability)
     - [Nines](#nines)
-    - [redundancy](#redundancy)
+    - [Redundancy](#redundancy)
     - [SLA](#sla)
     - [SLO](#slo)
   - [Caching](#caching)
