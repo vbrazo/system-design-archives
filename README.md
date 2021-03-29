@@ -194,7 +194,7 @@ of the requested domain name in the response.
 IP packets. TCP headers. HTTP requests.
 
 As daunting as they may seem, these low-level networking concepts are essential
-to understanding how machines in a system communicate with one another. And as
+to understand how machines in a system communicate with one another. And as
 we all know, proper communication is key for thriving relationships!
 
 ### IP
@@ -701,7 +701,7 @@ A popular graph database that consists of `nodes`, `relationships`,
 
 ## Replication And Sharding
 
-A system's performance is often only as good as its database's; optimize the
+A system's performance is often only as good as its database; optimize the
 latter, and watch as the former improves in tandem!
 
 On that note, in this video we'll examine how data redundancy and data partitioning
@@ -918,7 +918,7 @@ systems tend to allow the same messages to be consumed multiple times.
 
 For example, increasing an integer value in a database is `not` an
 idempotent operation, since repeating this operation will not have the same
-effect as if it had been performed only once. Conversly, setting a value to
+effect as if it had been performed only once. Conversely, setting a value to
 "COMPLETE" `is` an idempotent operation, since repeating this operation
 will always yield the same result: the value will be "COMPLETE".
 
@@ -957,12 +957,12 @@ When dealing with a MapReduce library, engineers and/or systems administrators
 only need to worry about the map and reduce functions, as well as their inputs
 and outputs. All other concerns, including the parallelization of tasks and
 the fault-tolerance of the MapReduce job, are abstracted away and taken care
-of by the MapReduce implementation.
+or by the MapReduce implementation.
 
 ### Distributed File System
 
 A Distributed File System is an abstraction over a (usually large) cluster of
-machines that allows them to act like one large file system. The two most
+machines that allow them to act like one large file system. The two most
 popular implementations of a DFS are the `Google File System` (GFS) and
 the `Hadoop Distributed File System` (HDFS).
 
@@ -1094,9 +1094,7 @@ of the connection.
 
 ## API Design
 
-So you've mastered all lessons hitherto on SystemsExpert, and you now feel
-confident you could ace any systems design interview. That's wonderful and
-all, but...could you pass an API design interview?
+Could you pass an API design interview?
 
 If you're sweating bullets, then sweat no more. This final video is the last
 piece of the puzzle you need to become a true Systems Expert.
